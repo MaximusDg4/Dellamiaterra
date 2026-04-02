@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+    --bg: #f1ddcf;
+    --text: #5D5C58;
+    --accent: #C2B2A3;
+    --white: #FFFFFF;
+    --texto: #5d5c58;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg);
+    color: var(--texto);
+    line-height: 1.8;
+}
+
+/* --- CENTRADO GLOBAL DE H2 --- */
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-style: italic;
+    text-align: center; /* Centra el texto */
+    margin-bottom: 40px;
+    width: 100%; /* Asegura que el alineado sea sobre el total de la pantalla */
+}
+
+/* --- NAVEGACIÓN --- */
+header {
+    padding: 5px 5%; /* Menos espacio vertical */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(245, 245, 220, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+/* Solo si quieres logo a la izquierda y menú a la derecha */
+nav {
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 80px;  /* Reducido de 150px */
+    width: 80px;   /* Reducido de 150px */
+   display: block;
+   margin: 0 auto 10px;
+   border-radius: 50%;
+   object-fit: cover;
+
+}
+
+.logo h1 {
+    font-size: 0.9rem; /* Un poco más pequeño para acompañar */
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px; /* Reducido de 30px para que no sea tan ancho */
+    border-top: 1px solid #ccc; /* Asegúrate que var(--accent) funcione o usa un color fijo */
+    padding-top: 8px; /* Reducido de 15px */
+    margin-top: 5px;
+    justify-content: center;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--texto);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+.hero p {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--texto);
+    
+    /* SOLUCIÓN AL TAMAÑO: Subimos a 1.4rem o 1.5rem para el Hero */
+    font-size: 1.45rem; 
+    
+    /* Ajustamos el interlineado: un poco menos que 1.8 para que el 
+       texto no se vea "desarmado" al ser más grande */
+    line-height: 1.6; 
+    
+    /* Centrado suele quedar mejor en la sección Hero que el justificado */
+    text-align: center; 
+    
+    max-width: 800px;        /* Evita que las líneas sean infinitas a lo ancho */
+    margin: 0 auto 30px;     /* Centra el bloque y da espacio abajo */
+    font-weight: 400;        /* Peso normal para esta fuente elegante */
+}
+
+
+
+.mySwiper {
+    width: 100% !important;
+    max-width: 1000px !important; /* No la dejes estirarse al infinito */
+    height: 450px !important;    /* Una altura cómoda para ver la pieza entera */
+    margin: 20px auto !important;
+    background-color: #f5f5dc !important; /* Fondo crema para los bordes */
+    border-radius: 20px !important;       /* Un borde redondeado suave */
+    overflow: hidden !important;
+}
+
+.mySwiper .swiper-slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.mySwiper .swiper-slide img {
+    /* CAMBIO CLAVE: 'contain' en lugar de 'cover' */
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important; /* MUESTRA LA FOTO ENTERA SIN RECORTE */
+    
+    /* Quitamos cualquier zoom previo */
+    transform: none !important;
+    margin: 0 auto !important;
+}
+
+/* --- MULTIMEDIA (ARREGLO DE VIDEOS) --- */
+.mySwiper, .tallerSwiper {
+    width: 100%;
+    max-width: 500px; 
+    margin: 40px auto; /* Centra el slider */
+    background: #000; /* Fondo negro preventivo */
+    overflow: hidden;
+    
+}
+
+/* IMPORTANTE: Cambiamos a display: block y height automático real */
+
+
+/* LA CLAVE PARA QUITAR EL ZOOM */
+.video-taller {
+    width: auto !important;     /* El ancho se ajusta solo */
+    height: 100% !important;    /* El alto manda para que no se corte */
+    max-width: 100% !important;
+    
+    /* CAMBIO FUNDAMENTAL: Usamos 'contain' en lugar de 'cover' */
+    object-fit: contain !important; 
+    
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- SECCIONES --- */
+section {
+    padding: 80px 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido de la sección */
+}
+
+/* --- SECCIÓN CURSOS --- */
+#Cursos {
+    padding: 100px 5%; /* Más espacio arriba y abajo */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color: var(--bg);
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#Cursos h2 {
+    font-size: 3rem; /* Título de sección bien grande */
+    margin-bottom: 60px;
+    color: #2f4f4f; /* Un tono oscuro como el pizarra que buscabas */
+}
+
+/* CONTENEDOR */
+.cursos-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px; /* Más espacio entre columnas para que no se vean pegadas */
+    width: 100%;
+    max-width: 1400px; /* Aumentamos el ancho máximo permitido */
+}
+
+/* CADA COLUMNA (Contenedor Vertical) */
+.curso-item {
+    background-color: rgba(245, 245, 220, 0.95);
+    padding: 50px 35px; /* Más aire interno */
+    border-radius: 20px;
+    text-align: center;
+    
+    flex: 1;
+    /* Subimos el ancho máximo para que no se vean como fideos */
+    min-width: 300px; 
+    max-width: 420px; 
+    
+    box-shadow: 0 15px 45px rgba(0,0,0,0.08); /* Sombra más suave y elegante */
+    border: 1px solid rgba(0,0,0,0.05);
+    
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+.curso-item:hover {
+    transform: translateY(-10px); /* Se eleva un poquito al tocarla */
+}
+
+/* --- SOLUCIÓN AL TAMAÑO DEL TEXTO INTERNO --- */
+
+.curso-item h3 {
+    font-size: 2rem; /* Título del curso más grande */
+    margin-bottom: 20px;
+    color: #4A5D23; /* Verde musgo para los títulos */
+    letter-spacing: 1px;
+}
+
+.curso-item p {
+    font-size: 1.3rem; /* Párrafo más grande para que se lea fácil */
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* Responsivo para tablets y celulares */
+@media (max-width: 1024px) {
+    .cursos-container {
+        flex-wrap: wrap; /* Permite que bajen si no entran */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cursos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .curso-item {
+        width: 90%;
+        max-width: 450px;
+    }
+}
+
+
+/* --- TABLA --- */
+#horarios { 
+    width: 100%;
+    padding: 60px 0;
+    background-color: rgba(245, 245, 220, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+}
+
+#horarios h2{
+     font-family: 'Playfair Display', serif; /* La fuente elegante */
+    color: var(--texto);             /* Gris muy oscuro, no negro puro */
+    font-size: 2.5rem;       /* Tamaño grande y claro */
+    margin-bottom: 20px;     /* Espacio antes del párrafo */
+    font-weight: 700;
+}
+/*El Pizarron*/
+table {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f5f5dc;
+    color: var(--text);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 15px solid #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    font-family: 'patrick hand', cursive;
+
+}
+
+/*ENCABEZADO DE LA PIZARRA*/
+
+th{
+    background-color: #f5f5dc;
+    color: var(--text);
+    padding: 20px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border-bottom: 2px dashed #555;
+}
+
+/*CELDAS DE LA PIZARRA*/
+
+td {
+    padding: 20px;  
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+tr:hover td{
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+}
+/*ESTILOS PARA LA PRIMERA COLUMNA*/
+td:first-child {
+    font-weight: bold;
+    color: var(--text);
+    border-right: 2px dashed #555;
+
+}
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* --- FOOTER --- */
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 0.7rem;
+}
+#NuestroTaller {
+    width: 100%;
+    background-color: var(--bg);
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+#NuestroTaller h2 {
+    font-family: 'cormorant garamond', serif;
+    color: var(--texto);
+    font-size: 2.2rem;       /* Ligeramente más chico que el Hero h2 */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+#NuestroTaller p {
+   
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--texto);
+    
+    /* SOLUCIÓN AL TAMAÑO: Subimos a 1.4rem o 1.5rem para el Hero */
+    font-size: 1.45rem; 
+    
+    /* Ajustamos el interlineado: un poco menos que 1.8 para que el 
+       texto no se vea "desarmado" al ser más grande */
+    line-height: 1.6; 
+    
+    /* Centrado suele quedar mejor en la sección Hero que el justificado */
+    text-align: center; 
+    
+    max-width: 800px;        /* Evita que las líneas sean infinitas a lo ancho */
+    margin: 0 auto 30px;     /* Centra el bloque y da espacio abajo */
+    font-weight: 400;        /* Peso normal para esta fuente elegante */
+}
+
+/* El contenedor del carrusel de videos */
+.tallerSwiper {
+    width: 100% !important;
+    max-width: 1100px;     /* No dejamos que se estire al infinito */
+    height: 500px !important; /* Altura fija para que el video tenga espacio */
+    margin: 0 auto;
+    background-color: rgba(245 , 245, 220, 0.95); /* Fondo negro por si el video es angosto */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.tallerSwiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#informacion{
+    padding: 60px 5%;
+    text-align: center;
+    background-color: rgba(245, 245, 220, 0.95);
+    border-radius: 0px
+}
+ #informacion h2 {
+
+    font-family: 'cormorant garamond', serif; /* La fuente elegante */
+    color: #1a1a1a;             /* Gris muy oscuro, no negro puro */
+    font-size: 2.5rem;       /* Tamaño grande y claro */
+    margin-bottom: 20px;     /* Espacio antes del párrafo */
+    font-weight: 700;
+ }
+
+
+#informacion h3 {
+
+    font-family: 'cormorant garamond', serif; /* La fuente elegante */
+    color: #1a1a1a;             /* Gris muy oscuro, no negro puro */
+    font-size: 2.5rem;       /* Tamaño grande y claro */
+    margin-bottom: 20px;     /* Espacio antes del párrafo */
+    font-weight: 700;
+ }
+ #informacion p {
+    font-family: 'cormorant garamond', serif; /* La fuente elegante */
+    color: #1a1a1a;             /* Gris muy oscuro, no negro puro */
+ }
+
+ .whatsapp, .instagram {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+
+
+}
+.whatsapp i, .instagram i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+.whatsapp a { color:#25d366; text-decoration: none;}
+.instagram a { color: #e1306c; text-decoration: none;}
+
+
+i:hover {
+    transform: scale(1.2);
+}
+
+
+footer {
+    background-color: #4eb5b0;
+    color: #f5f5dc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; 
+}
