@@ -293,18 +293,35 @@ section {
     margin-bottom: 20px;
 }
 
-/* Responsivo para tablets y celulares */
+/* --- Responsivo para tablets (Pantallas medianas) --- */
 @media (max-width: 1024px) {
     .cursos-container {
-        flex-wrap: wrap; /* Permite que bajen si no entran */
+        flex-wrap: wrap; /* Permite que las tarjetas bajen si no entran de a tres */
         gap: 20px;
+        justify-content: center; /* Centra las tarjetas si queda una sola abajo */
     }
 }
 
+/* --- Responsivo para celulares (Pantallas chicas) --- */
 @media (max-width: 768px) {
     .cursos-container {
-        flex-direction: column;
-        align-items: center;
+        display: flex; /* Aseguramos que siga siendo flex */
+        flex-direction: column; /* Una tarjeta arriba de la otra */
+        align-items: center; 
+        gap: 30px; /* Un poco más de aire entre curso y curso */
+    }
+
+    /* Ajuste para las tarjetas individuales en celular */
+    .curso-card {
+        width: 90% !important; /* Que la tarjeta ocupe casi todo el ancho del celu */
+        max-width: 350px; /* Pero que no se deforme si el celu es muy grande */
+    }
+
+    h2 {
+        font-size: 2.2rem; /* Achicamos un poco el título "Nuestros Cursos" */
+        margin-bottom: 25px;
+    }
+} /* <--- IMPORTANTE: Asegurate de cerrar siempre esta llave final */
     }
     .curso-item {
         width: 90%;
