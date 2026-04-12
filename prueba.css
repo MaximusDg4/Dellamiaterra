@@ -343,6 +343,9 @@ i:hover {
     gap: 8px;
     margin: 40px 0;
     font-family: 'Montserrat', sans-serif;
+    width: 100% !important; /* Fuerza a que ocupe todo el ancho */
+    clear: both; /* Por si tenés algún elemento flotando antes */
+
 }
 
 .num-pag, .btn-pag {
