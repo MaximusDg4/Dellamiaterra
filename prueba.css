@@ -333,3 +333,47 @@ i:hover {
     padding: 15px !important;
     border-radius: 5px;
 }
+
+
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 40px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.num-pag, .btn-pag {
+    text-decoration: none;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+/* El botón de la página donde estás parado */
+.num-pag.activa {
+    background-color: #d2b48c; /* Un color tierra que combine con tu taller */
+    color: white;
+    border-color: #d2b48c;
+}
+
+.num-pag:hover, .btn-pag:hover {
+    background-color: #f5f5dc; /* El crema de tu fondo */
+    border-color: #b5a48c;
+}
+
+/* Responsivo: para que en el celu no se amontonen */
+@media (max-width: 600px) {
+    .num-pag {
+        display: none; /* Escondemos los números intermedios en celu */
+    }
+    .num-pag.activa {
+        display: inline-block; /* Solo dejamos el número actual */
+    }
+}
