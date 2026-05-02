@@ -323,12 +323,12 @@ section {
         margin-bottom: 25px;
     }
 } /* <--- IMPORTANTE: Asegurate de cerrar siempre esta llave final */
-    }
+    
     .curso-item {
         width: 90%;
         max-width: 450px;
     }
-}
+
 
 
 /* --- TABLA --- */
@@ -481,6 +481,153 @@ footer {
 }
 
 
+/* --- Sección Arcilla - Dellamiaterra --- */
+
+
+.info-ceramica {
+    padding: 60px 20px;
+    background-color: var(--bg);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    color: #8c462e;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.acordeon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo del contenedor details */
+details {
+    background-color: #fff;
+    border: 1px solid #eae1d8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+details[open] {
+    border-color: #a67c52;
+    box-shadow: 0 5px 15px rgba(166, 124, 82, 0.1);
+}
+
+/* Estilo del título (Summary) */
+summary {
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a3f35;
+    cursor: pointer;
+    list-style: none; /* Quita la flechita por defecto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+summary:hover {
+    background-color: #f9f7f2;
+    color: #a67c52;
+}
+
+/* Añadir una flechita personalizada con CSS */
+summary::after {
+    content: '▶';
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+    color: #d9b99b;
+}
+
+details[open] summary::after {
+    transform: rotate(90deg);
+    color: #8c462e;
+}
+
+/* Contenido desplegado */
+.details-content {
+    padding: 0 25px 25px 25px;
+    color: #666;
+    line-height: 1.6;
+    border-top: 1px solid #f9f7f2;
+    animation: fadeIn 0.4s ease;
+}
+
+.details-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.details-content li {
+    margin-bottom: 10px;
+}
+
+/* Animación simple para que no aparezca de golpe */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Cita Final --- */
+.cita-textual {
+    text-align: center;
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--color-primario);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.acordeon-arcilla {
+    background: var(--bg);
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Estilo del encabezado (lo que siempre se ve) */
+.acordeon-arcilla summary {
+    list-style: none; /* Quita la flechita por defecto del navegador */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: none;
+}
+
+/* Girar la flecha cuando se abre */
+.acordeon-arcilla[open] .icono-flecha {
+    transform: rotate(180deg);
+}
+
+.icono-flecha {
+    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    color: #6b705c;
+}
+
+
+
+
 
 #informacion{
     padding: 60px 5%;
@@ -545,3 +692,4 @@ footer {
     padding: 20px;
     margin-top: 40px; 
 }
+
