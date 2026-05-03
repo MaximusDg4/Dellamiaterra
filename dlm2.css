@@ -706,3 +706,35 @@ footer {
     margin-top: 40px; 
 }
 
+
+/* --- AJUSTE DE LA ILUSTRACIÓN --- */
+.ilustracion-taller {
+    width: 100%;
+    padding: 20px 0; /* Menos espacio arriba y abajo */
+    display: flex;
+    justify-content: center;
+}
+
+.img-container {
+    /* AQUÍ AJUSTAMOS EL TAMAÑO MÁXIMO */
+    width: 100%;
+    max-width: 350px; /* Bajamos de 600px a 350px para que sea un detalle elegante */
+    margin: 0 auto;
+}
+
+.img-artesana {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Sombras sutiles para que flote sobre el fondo */
+    filter: drop-shadow(0 5px 10px rgba(166, 124, 82, 0.15)); 
+    /* Si quieres que se vea un poquito más pequeña aún, usa opacity */
+    opacity: 0.9; 
+}
+
+/* Ajuste para que en celulares no quede gigante */
+@media (max-width: 600px) {
+    .img-container {
+        max-width: 250px; /* Todavía más pequeña en móviles */
+    }
+}
