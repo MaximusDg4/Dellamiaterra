@@ -729,8 +729,7 @@ footer {
     /* Sombras sutiles para que flote sobre el fondo */
     filter: drop-shadow(0 5px 10px rgba(166, 124, 82, 0.15)); 
     /* Si quieres que se vea un poquito más pequeña aún, usa opacity */
-    opacity: 0.9; 
-}
+    
 
 /* Ajuste para que en celulares no quede gigante */
 @media (max-width: 600px) {
