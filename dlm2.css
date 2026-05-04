@@ -707,33 +707,31 @@ footer {
 }
 
 
-/* --- AJUSTE DE LA ILUSTRACIÓN --- */
 .ilustracion-taller {
     width: 100%;
-    padding: 20px 0; /* Menos espacio arriba y abajo */
+    padding: 30px 0;
     display: flex;
     justify-content: center;
+    position: relative; 
+    z-index: 10; /* Esto asegura que esté por encima de los dibujos del fondo */
 }
 
 .img-container {
-    /* AQUÍ AJUSTAMOS EL TAMAÑO MÁXIMO */
     width: 100%;
-    max-width: 350px; /* Bajamos de 600px a 350px para que sea un detalle elegante */
+    max-width: 320px;
     margin: 0 auto;
+    /* Creamos un "escudo" sólido detrás de la imagen */
+    background-color: white; 
+    border-radius: 50%; /* Si la imagen es redondeada, esto queda genial */
+    box-shadow: 0 0 50px 40px white; /* Esto crea un aura blanca sólida que tapa el fondo */
 }
 
 .img-artesana {
     width: 100%;
     height: auto;
     display: block;
-    /* Sombras sutiles para que flote sobre el fondo */
-    filter: drop-shadow(0 5px 10px rgba(166, 124, 82, 0.15)); 
-    /* Si quieres que se vea un poquito más pequeña aún, usa opacity */
-    
-
-/* Ajuste para que en celulares no quede gigante */
-@media (max-width: 600px) {
-    .img-container {
-        max-width: 250px; /* Todavía más pequeña en móviles */
-    }
+    position: relative;
+    /* QUITAMOS EL OPACITY para que no sea transparente */
+    opacity: 1 !important; 
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
