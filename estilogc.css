@@ -95,6 +95,7 @@ nav ul li a {
     letter-spacing: 2px;
     text-transform: uppercase;
     transition: 0.3s;
+}
 .nav-links a:hover, .nav-links a.active {
     color: #b05d48;      /* Terracota para el enlace activo */
 }
