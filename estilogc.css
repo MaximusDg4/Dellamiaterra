@@ -1,0 +1,370 @@
+/* --- RESETEO BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f1ddcf;
+    color: #5d5c58;
+    line-height: 1.4;
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100%;
+    
+    /* Fondos flotantes rústicos */
+    background-image: 
+        url('img/muñeco.png'), 
+        url('img/cactus.png'), 
+        url('img/pajarito.png');
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: 
+        center top 15%,     
+        right 5% bottom 10%,  
+        left 10% bottom 20%;  
+    background-size: 180px, 200px, 150px;
+    background-attachment: fixed;
+}
+
+/* --- ESTILOS DE LA BARRA DE NAVEGACIÓN (Arreglado y Centrado) --- */
+header {
+    background-color: rgba(245, 245, 220, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+    align-items: center;            /* Alinea todo perfectamente al centro vertical */
+    padding: 15px 5%;
+    max-width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Alinea la imagen del logo y el texto en el mismo renglón */
+    gap: 15px;           /* Separa el logo de la imagen del texto */
+}
+
+.logo-img {
+    height: 60px;        /* Altura ideal para que no rompa la barra de navegación */
+    width: auto;         /* Mantiene la proporción original de la imagen */
+    object-fit: contain;
+    display: block;
+}
+
+.logo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #8b5a2b;      /* Marrón arcilla Della Mia Terra */
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;           /* Separación prolija entre secciones */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #5d5c58;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #b05d48;      /* Terracota para el enlace activo */
+}
+
+/* --- ENVOLTURAS DEL FORMULARIO DE PERSONALIZACIÓN --- */
+.contenedor-formulario-gc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 10px 20px; /* Margen superior controlado arriba de las tarjetas */
+}
+
+.formulario-personalizar {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(166, 124, 82, 0.1);
+    border: 1px solid #eae1d8;
+}
+
+.formulario-personalizar h3 {
+    font-size: 1.1rem;
+    color: #8c462e;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.input-group-gc {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.input-group-gc label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #5d5c58;
+}
+
+.input-group-gc input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group-gc input:focus {
+    border-color: #b05d48;
+}
+
+/* --- CONTENEDOR EXCLUSIVO PARA LAS GIFT CARDS --- */
+.main-content {
+    display: flex;
+    flex-wrap: wrap;         /* Permite que las tarjetas bajen en pantallas chicas */
+    justify-content: center;   /* Centra las tarjetas horizontalmente */
+    align-items: flex-start;   /* Alinea los techos de las tarjetas a la misma altura */
+    gap: 30px;                /* Espaciado perfecto entre tarjetas */
+    min-height: auto; 
+    padding: 20px 20px 60px 20px;
+}
+
+/* --- ESTILOS ESPECÍFICOS DE LA GIFT CARD --- */
+.gift-card {
+    background-color: #fff;
+    width: 100%;
+    max-width: 450px; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(166, 124, 82, 0.15); 
+    border: 1px solid #eae1d8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Módulo visual de dedicatoria interno */
+.dedicatoria-voucher {
+    background-color: #fdfbf9;
+    padding: 15px 30px;
+    border-bottom: 1px dashed #eae1d8;
+    font-family: 'Patrick Hand', cursive, sans-serif; 
+    font-size: 1.2rem;
+    color: #5d5c58;
+}
+
+.dedicatoria-voucher p {
+    margin-bottom: 4px;
+}
+
+.dedicatoria-voucher span {
+    color: #b05d48; 
+    font-weight: bold;
+}
+
+.card-header {
+    background-color: #eae1d8; 
+    padding: 20px;
+    text-align: center;
+}
+
+.v-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8c7c6d;
+    font-weight: 600;
+}
+
+.v-title {
+    font-family: 'cormorant garamond', serif; 
+    font-size: 1.8rem;
+    color: #4a3e3d;
+    margin-top: 5px;
+}
+
+.card-body {
+    padding: 30px;
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.slogan {
+    font-style: italic;
+    color: #8c7c6d;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.program {
+    margin-bottom: 25px;
+}
+
+.class-item {
+    border-left: 3px solid #d9b99b;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.4; 
+}
+
+.class-title {
+    display: block;
+    font-weight: 600;
+    color: #4a3e3d;
+    margin-bottom: 2px;
+}
+
+.details {
+    background-color: #fdfbf9;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    border: 1px solid #f4eee8;
+}
+
+.details p {
+    margin-bottom: 8px;
+}
+
+.details p:last-child {
+    margin-bottom: 0;
+}
+
+/* Botón de compra para las GiftCards */
+.btn-comprar-gc {
+    display: inline-block;
+    background-color: #b05d48; 
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(176, 93, 72, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-comprar-gc:hover {
+    background-color: #8b5a2b; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 90, 43, 0.3);
+}
+
+.btn-comprar-gc i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+.card-footer {
+    background-color: #fcf9f6;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #8c7c6d;
+    border-top: 1px solid #eae1d8;
+}
+
+.price-disclaimer {
+    font-style: italic;
+    margin-top: 4px;
+    color: #b3a294;
+}
+
+/* --- SECCIÓN DE CONTACTOS / REDES --- */
+#informacion {
+    background-color: #f5f5dc; 
+    text-align: center;        
+    padding: 60px 20px;       
+}
+
+#informacion h2 {
+    font-family: 'Montserrat', sans-serif; 
+    color: #b05d48;          
+    font-size: 2.5rem;       
+    margin-bottom: 20px;     
+    font-weight: 700;
+}
+
+#informacion p {
+    font-family: 'cormorant garamond', serif; 
+    color: #1a1a1a;             
+}
+
+.whatsapp, .instagram {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.whatsapp i, .instagram i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.whatsapp a { color:#25d366; text-decoration: none;}
+.instagram a { color: #e1306c; text-decoration: none;}
+
+i:hover {
+    transform: scale(1.2);
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #4eb5b0;
+    color: #f5f5dc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; 
+}
+
+/* --- AJUSTES RESPONSIVOS PARA MÓVILES --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Compra | Dellamiaterra</title>
+    <!-- Estilos de la tienda y librerías de íconos/galería -->
+    <link rel="stylesheet" href="prueba.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.css">
+</head>
+<body>
+
+    <!-- Encabezado y Navegación -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/Della Mia Terra (R).png" alt="Logo Della Mia Terra" class="logo-img">
+                <h1> Della Mia Terra</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html">Cursos</a></li>
+                <li><a href="index.html">Horarios</a></li>
+                <li><a href="index.html">Información</a></li>
+                <li><a href="producto.html" class="active">Productos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal del Catálogo -->
+    <main class="tienda-container">
+        <header class="tienda-header">
+            <h2>Catálogo de Piezas Únicas</h2>
+            <p>Modeladas a mano en nuestro taller. Elegí tu pieza favorita y consultanos directamente por WhatsApp para coordinar la compra.</p>
+        </header>
+
+        <!-- El contenedor del catálogo se deja vacío. JavaScript se encargará de rellenarlo -->
+        <section id="catalogo-compra" class="catalogo-grid baguetteBoxGaleria">
+            <!-- Las tarjetas de producto generadas por JS se inyectarán aquí -->
+        </section>
+    </main>
+
+    <!-- Paginación estática (opcional para el futuro) -->
+    <div class="paginacion">
+        <a href="#" class="btn-pag">&laquo; Anterior</a>
+        <a href="#" class="num-pag activa">1</a>
+        <a href="#" class="num-pag">2</a>
+        <a href="#" class="num-pag">3</a>
+        <a href="#" class="btn-pag">Siguiente &raquo;</a>
+    </div>
+
+    <!-- Pie de página y contacto general -->
+    <footer>
+        <p>&copy; 2026 Dellamiaterra - Todos los derechos Reservados.</p>
+        <div class="redes-footer">
+            <div class="whatsapp">
+                <a href="https://wa.me/5491155153397" class="whatsapp-float" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                </a>
+                <span>Whatsapp</span>
+            </div>
+            <div class="instagram">
+                <a href="https://instagram.com/dellamiaterraceramica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <span>Instagram</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts: Primero la librería de la galería y luego tu lógica de negocio -->
+    <script src="https://cdn.jsdelivr.net/npm/baguettebox.js@1.11.1/dist/baguetteBox.min.js"></script>
+    <script src="producto.js"></script>
+</body>
+</html>
