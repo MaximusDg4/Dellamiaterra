@@ -147,6 +147,10 @@ nav ul li a {
     max-width: 800px;        /* Evita que las líneas sean infinitas a lo ancho */
     margin: 0 auto 30px;     /* Centra el bloque y da espacio abajo */
     font-weight: 400;        /* Peso normal para esta fuente elegante */
+    background-color: rgba(241, 221, 207, 0.6); /* Tono terracota/crema muy suave */
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px); /* Difumina suavemente el dibujo que pase por detrás */
 }
 
 
