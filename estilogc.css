@@ -73,9 +73,15 @@ nav {
 }
 
 .logo h1 {
-    font-size: 0.9rem; /* Un poco más pequeño para acompañar */
-    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif; /* Mantona la coherencia con los h2 */
+    font-size: 2.2rem;       /* <--- Un tamaño mucho más imponente y vistoso */
+    font-weight: 600;
+    color: #4a4945;          /* Un tono sutilmente más oscuro para que resalte */
+    letter-spacing: 2px;     /* Más espacio entre letras para darle un toque fino */
     text-align: center;
+    margin-top: 5px;         /* Ajustá este margen si querés acercarlo o alejarlo del logo */
+    margin-bottom: 15px;
+}
 }
 
 nav ul {
