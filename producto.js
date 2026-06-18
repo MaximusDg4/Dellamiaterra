@@ -1,98 +1,53 @@
-// Configuración global
+// =========================================================================
+// CONFIGURACIÓN GLOBAL: Conexión con Google Sheets y WhatsApp
+// =========================================================================
+const SPREADSHEET_ID = "16V59XKXKq8wfFGBvxyPcL7i7fqf94tz0D04Ry-J_GUA"; 
+const TAB_NAME = "Hoja 1"; // Asegurate de que tu pestaña se llame así
 const TELEFONO_WHATSAPP = "5491155153397"; 
-const PRODUCTOS_POR_PAGINA = 6; // Definí cuántos productos querés ver por página
+
+const PRODUCTOS_POR_PAGINA = 6; // Cuántos productos se ven por página
 let paginaActual = 1;
+let productosCompra = []; // Se va a rellenar dinámicamente desde Google Sheets
 
-// Base de datos completa (Aquí podés seguir agregando el producto 13, 14, 15, etc.)
-const productosCompra = [
-    {
-        id: 1,
-        titulo: "Jarra de Cerámica",
-        descripcion: "Pieza de gres con esmalte reactivo en tonos turquesa y azul marino.",
-        precio: 18500,
-        imagen: "img/jarran1.jpeg"
-    },
-    {
-        id: 2,
-        titulo: "Dúo de jarrones",
-        descripcion: "Par de jarrones de cerámica con esmalte de blanco hueso y con textura esmaltada en tonos ocre y marrón oscuro moteado.",
-        precio: 32000,
-        imagen: "img/producto 1.jpeg"
-    },
-    {
-        id: 3,
-        titulo: "Fuente de Cerámica",
-        descripcion: "Fuente única de cerámica modelada a mano con un esmalte reactivo texturizado con tonos vibrantes de verde oliva y ocre.",
-        precio: 24000,
-        imagen: "img/producto2.jpeg"
-    },
-    {
-        id: 4,
-        titulo: "Colección de cerámica artesanal",
-        descripcion: "La Colección incluye tazas, tazones, jarras, macetas y objetos decorativos modelados a mano.",
-        precio: 45000,
-        imagen: "img/productos2.jpeg"
-    },
-    {
-        id: 5,
-        titulo: "Taza de Cerámica",
-        descripcion: "Taza artesanal de cerámica blanca con una distintiva superficie alveolada.",
-        precio: 8500,
-        imagen: "img/productos3.jpeg"
-    },
-    {
-        id: 6,
-        titulo: "Set de Tazones de Cerámica",
-        descripcion: "Par de tazones de cerámica artesanales pintados a mano con franjas en tonos amarillo, naranja, y lila en la base.",
-        precio: 16000,
-        imagen: "img/productos4.jpeg"
-    },
-    {
-        id: 7,
-        titulo: "Bandeja Altiplano",
-        descripcion: "Una pieza de gres de gran formato que combina la fuerza del ocre volcánico con la pureza del blanco tiza.",
-        precio: 27500,
-        imagen: "img/plato3.jpeg"
-    },
-    {
-        id: 8,
-        titulo: "Tetera abismo marino",
-        descripcion: "Tetera modelada a mano con un esmalte reactivo que evoca la profundidad y las mareas del océano con tonos turquesas y negros profundos.",
-        precio: 35000,
-        imagen: "img/tetera.jpeg"
-    },
-    {
-        id: 9,
-        titulo: "Set Dúo de Tazas",
-        descripcion: "Dúo de tazas modelados a mano con esmaltes en variante turquesa y óxido.",
-        precio: 15500,
-        imagen: "img/tazas1.jpeg"
-    },
-    {
-        id: 10,
-        titulo: "Dúo de Tazas con orejas de conejo",
-        descripcion: "Pareja de tazas con tapa modeladas a mano con esmalte blanco cremoso. Una presenta un delicado lazo celeste, y la otra, un ramillete de rosas con color rosa.",
-        precio: 19000,
-        imagen: "img/tazasconejos.jpeg"
-    },
-    {
-        id: 11,
-        titulo: "Set de cuencos",
-        descripcion: "Cuencos en gres con esmaltes de reducción y saturación metálica. Cada cuenco presenta un tratamiento de superficie diferenciado.",
-        precio: 22000,
-        imagen: "img/tazas.jpeg"
-    },
-    {
-        id: 12,
-        titulo: "Fuente de gres Orgánico",
-        descripcion: "Pieza única modelada a mano con bordes irregulares. Presenta una composición cromática mediante la superposición de esmaltes reactivos.",
-        precio: 26000,
-        imagen: "img/plato.jpeg"
+// Enlace que lee el Excel como datos estructurados JSON
+const URL_GOOGLE_SHEETS = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(TAB_NAME)}`;
+
+// NUEVA FUNCIÓN: Descarga los datos de Google antes de mostrar la tienda
+async function conectarGoogleSheets() {
+    try {
+        const respuesta = await fetch(URL_GOOGLE_SHEETS);
+        const texto = await respuesta.text();
+        
+        // Limpiamos el texto que devuelve Google para transformarlo en un JSON puro
+        const jsonPuro = JSON.parse(texto.substr(47).slice(0, -2));
+        const filas = jsonPuro.table.rows;
+
+        // Mapeo automático adaptado a tu estructura (A=0, B=1, C=2, D=3...)
+        productosCompra = filas.map((fila, index) => {
+            return {
+                id: fila.c[0] ? fila.c[0].v : (index + 1),
+                titulo: fila.c[1] ? fila.c[1].v : "",
+                precio: fila.c[2] ? fila.c[2].v : 0,
+                imagen: fila.c[3] ? fila.c[3].v : "img/placeholder.jpg",
+                categoria: fila.c[4] ? fila.c[4].v : "", // Por si usás categorías
+                descripcion: fila.c[5] ? fila.c[5].v : ""
+            };
+        });
+
+        // Una vez cargados los productos, arranca tu lógica normal de catálogo
+        renderizarCatalogo();
+        configurarPaginacion();
+
+    } catch (error) {
+        console.error("Error cargando el catálogo desde Google Sheets:", error);
+        const contenedor = document.getElementById("catalogo-compra");
+        if (contenedor) {
+            contenedor.innerHTML = `<p style="text-align:center; color:#b05d48; font-weight:600; padding: 40px; grid-column: 1 / -1;">Hubo un problema al cargar los productos en tiempo real. Por favor, reintentá recargando la página.</p>`;
+        }
     }
-    // Podés meter más objetos acá abajo siguiendo la misma estructura y se van a ir acomodando solos en la página 3, 4, etc.
-];
+}
 
-// Función principal para mostrar los productos de la página activa
+// TU FUNCIÓN ORIGINAL (Adaptada para leer los datos dinámicos)
 function renderizarCatalogo() {
     const contenedor = document.getElementById("catalogo-compra");
     if (!contenedor) return;
@@ -151,25 +106,29 @@ function renderizarCatalogo() {
     actualizarBotonesPaginacion();
 }
 
-// Función para manejar los clics de la barra de paginación
+// TU FUNCIÓN ORIGINAL DE PAGINACIÓN
 function configurarPaginacion() {
     const barraPaginacion = document.querySelector(".paginacion");
     if (!barraPaginacion) return;
 
-    barraPaginacion.addEventListener("click", function(e) {
-        e.preventDefault(); // Evita que la página salte para arriba al hacer click
+    // Quitamos oyentes viejos para que no se dupliquen al cambiar de página
+    barraPaginacion.replaceWith(barraPaginacion.cloneNode(true));
+    
+    // Volvemos a capturar el elemento clonado limpio
+    const nuevaBarra = document.querySelector(".paginacion");
+    
+    nuevaBarra.addEventListener("click", function(e) {
+        e.preventDefault(); 
         
         const objetivo = e.target;
         const totalPaginas = Math.ceil(productosCompra.length / PRODUCTOS_POR_PAGINA);
 
-        // Si tocó un número de página específico
         if (objetivo.classList.contains("num-pag")) {
             paginaActual = parseInt(objetivo.textContent);
             renderizarCatalogo();
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Sube suavemente al inicio del catálogo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Si tocó el botón "Anterior"
         if (objetivo.classList.contains("btn-pag") && objetivo.textContent.includes("Anterior")) {
             if (paginaActual > 1) {
                 paginaActual--;
@@ -178,7 +137,6 @@ function configurarPaginacion() {
             }
         }
 
-        // Si tocó el botón "Siguiente"
         if (objetivo.classList.contains("btn-pag") && objetivo.textContent.includes("Siguiente")) {
             if (paginaActual < totalPaginas) {
                 paginaActual++;
@@ -189,7 +147,7 @@ function configurarPaginacion() {
     });
 }
 
-// Función interna para prender/apagar la clase "activa" en el número correspondiente
+// TU FUNCIÓN ORIGINAL DE BOTONES ACTIVOS
 function actualizarBotonesPaginacion() {
     const numerosPagina = document.querySelectorAll(".num-pag");
     numerosPagina.forEach(boton => {
@@ -201,6 +159,8 @@ function actualizarBotonesPaginacion() {
     });
 }
 
+// Inicializar llamando primero a la conexión con Google
+document.addEventListener("DOMContentLoaded", conectarGoogleSheets);
 // Inicializar todo al cargar la web
 document.addEventListener("DOMContentLoaded", () => {
     renderizarCatalogo();
