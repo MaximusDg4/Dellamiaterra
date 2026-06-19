@@ -111,35 +111,34 @@ nav ul li a {
     white-space: nowrap; /* Evita que una sola palabra se parta a la mitad */
 }
 
-/* --- ARREGLO RESPONSIVE MÓVIL --- */
 @media (max-width: 768px) {
-    /* Evitamos que cualquier elemento del sitio ensanche la pantalla */
+    /* 1. Evitamos que CUALQUIER cosa estire la pantalla hacia la derecha */
     html, body {
         width: 100% !important;
-        overflow-x: hidden !important; /* Corta cualquier desborde invisible de raíz */
+        overflow-x: hidden !important;
+        margin: 0;
+        padding: 0;
     }
 
-    section {
-        padding: 40px 20px !important; /* Espaciado fijo en píxeles, sin porcentajes raros */
+    /* 2. Forzamos a que las cajas de los cursos se pongan una debajo de la otra */
+    .cursos-container {
+        display: flex !important;
+        flex-direction: column !important; /* Se apilan en vertical */
         width: 100% !important;
-        max-width: 100% !important;
+        gap: 20px;
+    }
+
+    .curso-item {
+        width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    /* Tu texto del Hero se queda GRANDE pero corta líneas obligatoriamente */
-    .hero p {
-        font-size: 1.45rem !important; /* Tu tamaño grande original */
+    /* 3. ¡LA CLAVE! Volvemos la tabla responsive para que no empuje el diseño */
+    table {
+        display: block !important;       /* Deja de ser rígida */
         width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        display: block !important;
-        word-wrap: break-word !important; /* Fuerza el salto de línea */
-    }
-
-    /* Arreglo para la clase del HTML corregido */
-    .Taller-info {
-        width: 100% !important;
-        box-sizing: border-box !important;
+        overflow-x: auto !important;     /* Si no entra, genera un scroll interno SOLO para la tabla */
+        white-space: nowrap;             /* Mantiene los horarios prolijos */
     }
 }
 
