@@ -113,26 +113,28 @@ nav ul li a {
 
 /* --- ARREGLO RESPONSIVE EXCLUSIVO PARA MÓVILES --- */
 @media (max-width: 768px) {
-    /* 1. Le damos aire a las secciones para que el texto respire */
+    /* 1. Forzamos a las secciones y al texto a ocupar el ancho real del celular */
     section {
-        padding: 40px 5% !important; /* Bajamos el margen del 10% al 5% */
+        padding: 40px 15px !important; /* Cambiamos porcentaje por píxeles fijos para evitar desbordes */
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
-    /* 2. Controlamos el párrafo del Hero para que no se desborde */
+    /* 2. Mantenemos la letra grande pero la obligamos a encuadrar dentro de la pantalla */
     .hero p {
-        font-size: 1.15rem !important; /* Letra un pelo más chica para mobile */
-        line-height: 1.5;
-        padding: 0 10px;
-        width: 100%;
+        font-size: 1.45rem !important; /* Volvemos a tu tamaño original grande */
+        width: 100% !important;        /* Ocupa el ancho disponible */
+        max-width: 100% !important;    /* No permite que se estire más allá del borde del celu */
+        padding: 0 10px !important;    /* Espacio mínimo para que no toque el borde físico del vidrio */
+        box-sizing: border-box !important;
     }
 
-    /* 3. ¡LA CLAVE! Obligamos a la foto del colibrí (y cualquier otra suelta) a encuadrar */
+    /* 3. Ajuste para que la foto del colibrí y las del contenedor encajen perfectas */
     section img {
-        max-width: 100% !important;  /* No permite que la imagen sea más ancha que el celu */
-        height: auto !important;      /* Mantiene la proporción perfecta sin estirarse */
+        max-width: 100% !important;
+        height: auto !important;
         display: block !important;
-        margin: 20px auto !important; /* La centra y le da espacio arriba y abajo */
-        border-radius: 10px;          /* Un toque estético suave */
+        margin: 20px auto !important;
     }
 }
 
