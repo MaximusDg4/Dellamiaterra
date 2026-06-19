@@ -124,7 +124,14 @@ nav ul li a {
     nav ul li a {
         font-size: 0.65rem; /* Letra un poquito más chica en móviles muy pequeños */
         letter-spacing: 1px;
+   }
+    p {
+        font-size: 16px;   /* Por si querés achicar un pelo la letra en mobile */
+        padding: 0 15px;
     }
+    
+    img {
+        max-width: 90%;    /* Para que en el celu respire un poco a los lados */
 }
 
 
