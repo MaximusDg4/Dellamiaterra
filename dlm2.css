@@ -111,29 +111,30 @@ nav ul li a {
     white-space: nowrap; /* Evita que una sola palabra se parta a la mitad */
 }
 
-/* --- AJUSTES ESPECÍFICOS PARA CELULAR --- */
-@media (max-width: 600px) {
-    .logo img {
-        height: 120px !important; /* Logo más chico en celular para que no ocupe toda la pantalla */
+/* --- ARREGLO RESPONSIVE EXCLUSIVO PARA MÓVILES --- */
+@media (max-width: 768px) {
+    /* 1. Le damos aire a las secciones para que el texto respire */
+    section {
+        padding: 40px 5% !important; /* Bajamos el margen del 10% al 5% */
     }
 
-    nav ul {
-        gap: 10px; /* Menos espacio entre links para que entren más */
+    /* 2. Controlamos el párrafo del Hero para que no se desborde */
+    .hero p {
+        font-size: 1.15rem !important; /* Letra un pelo más chica para mobile */
+        line-height: 1.5;
+        padding: 0 10px;
+        width: 100%;
     }
 
-    nav ul li a {
-        font-size: 0.65rem; /* Letra un poquito más chica en móviles muy pequeños */
-        letter-spacing: 1px;
-   }
-    p {
-        font-size: 16px;   /* Por si querés achicar un pelo la letra en mobile */
-        padding: 0 15px;
+    /* 3. ¡LA CLAVE! Obligamos a la foto del colibrí (y cualquier otra suelta) a encuadrar */
+    section img {
+        max-width: 100% !important;  /* No permite que la imagen sea más ancha que el celu */
+        height: auto !important;      /* Mantiene la proporción perfecta sin estirarse */
+        display: block !important;
+        margin: 20px auto !important; /* La centra y le da espacio arriba y abajo */
+        border-radius: 10px;          /* Un toque estético suave */
     }
-    
-    img {
-        max-width: 90%;    /* Para que en el celu respire un poco a los lados */
 }
-
 
 
 
