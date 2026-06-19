@@ -111,33 +111,37 @@ nav ul li a {
     white-space: nowrap; /* Evita que una sola palabra se parta a la mitad */
 }
 
-/* --- ARREGLO RESPONSIVE EXCLUSIVO PARA MÓVILES --- */
+/* --- ARREGLO RESPONSIVE MÓVIL --- */
 @media (max-width: 768px) {
-    /* 1. Forzamos a las secciones y al texto a ocupar el ancho real del celular */
-    section {
-        padding: 40px 15px !important; /* Cambiamos porcentaje por píxeles fijos para evitar desbordes */
+    /* Evitamos que cualquier elemento del sitio ensanche la pantalla */
+    html, body {
         width: 100% !important;
-        max-width: 100% !important;
+        overflow-x: hidden !important; /* Corta cualquier desborde invisible de raíz */
     }
 
-    /* 2. Mantenemos la letra grande pero la obligamos a encuadrar dentro de la pantalla */
-    .hero p {
-        font-size: 1.45rem !important; /* Volvemos a tu tamaño original grande */
-        width: 100% !important;        /* Ocupa el ancho disponible */
-        max-width: 100% !important;    /* No permite que se estire más allá del borde del celu */
-        padding: 0 10px !important;    /* Espacio mínimo para que no toque el borde físico del vidrio */
+    section {
+        padding: 40px 20px !important; /* Espaciado fijo en píxeles, sin porcentajes raros */
+        width: 100% !important;
+        max-width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    /* 3. Ajuste para que la foto del colibrí y las del contenedor encajen perfectas */
-    section img {
+    /* Tu texto del Hero se queda GRANDE pero corta líneas obligatoriamente */
+    .hero p {
+        font-size: 1.45rem !important; /* Tu tamaño grande original */
+        width: 100% !important;
         max-width: 100% !important;
-        height: auto !important;
+        box-sizing: border-box !important;
         display: block !important;
-        margin: 20px auto !important;
+        word-wrap: break-word !important; /* Fuerza el salto de línea */
+    }
+
+    /* Arreglo para la clase del HTML corregido */
+    .Taller-info {
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 }
-
 
 
 .hero p {
