@@ -18,7 +18,7 @@ html, body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--bg);
     color: var(--texto);
-    line-height: 1.0;
+    line-height: 1.5;
    max-width: 100%;
     overflow-x: hidden; /* Esto corta el movimiento lateral */
     width: 100%;
@@ -53,9 +53,11 @@ h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
     font-style: italic;
+    line-height: 1.3; /* Evita que las líneas se pisen cuando el título se parte en 2 o 3 renglones */
     text-align: center; /* Centra el texto */
     margin-bottom: 40px;
     width: 100%; /* Asegura que el alineado sea sobre el total de la pantalla */
+    padding: 0 10px; /* Un poco de aire a los costados en pantallas chicas */
 }
 
 /* --- NAVEGACIÓN --- */
@@ -111,48 +113,49 @@ nav ul li a {
     white-space: nowrap; /* Evita que una sola palabra se parta a la mitad */
 }
 
-/* --- ARREGLO RESPONSIVE EXCLUSIVO PARA MÓVILES --- */
-@media (max-width: 768px) {
-    /* Evitamos que el body genere scroll lateral */
-    html, body {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
+/* --- AJUSTES ESPECÍFICOS PARA CELULAR --- */
+@media (max-width: 600px) {
+    .logo img {
+        height: 120px !important; /* Logo más chico en celular para que no ocupe toda la pantalla */
     }
 
-    /* Ajustamos el párrafo del Hero en el celu */
-    .hero p {
-        width: 100% !important;        /* Ocupa el ancho del celular */
-        max-width: 100% !important;    /* No deja que se estire hacia la derecha */
-        font-size: 1.45rem !important; /* Mantiene tu letra grande original */
-        padding: 20px 15px !important; /* Achicamos un pelito el relleno para que entre más texto en el celular */
-        box-sizing: border-box !important; /* Fuerza a respetar los límites de la pantalla */
+    nav ul {
+        gap: 10px; /* Menos espacio entre links para que entren más */
     }
 
-    /* Domamos la foto del colibrí para que no empuje el diseño */
-    section img {
-        max-width: 100% !important;
-        height: auto !important;
-        display: block !important;
-        margin: 20px auto !important;
+    nav ul li a {
+        font-size: 0.65rem; /* Letra un poquito más chica en móviles muy pequeños */
+        letter-spacing: 1px;
+    }
+
+    h2 {
+        font-size: 2rem; /* Más chico en celular para que entre en 1-2 líneas cómodas */
+        line-height: 1.35;
     }
 }
+
+
+
 
 .hero p {
     font-family: 'Cormorant Garamond', serif;
     color: var(--texto);
+    
+    /* SOLUCIÓN AL TAMAÑO: Subimos a 1.4rem o 1.5rem para el Hero */
     font-size: 1.45rem; 
+    
+    /* Ajustamos el interlineado: un poco menos que 1.8 para que el 
+       texto no se vea "desarmado" al ser más grande */
     line-height: 1.6; 
+    
+    /* Centrado suele quedar mejor en la sección Hero que el justificado */
     text-align: center; 
-    max-width: 800px;        
-    margin: 0 auto 30px;     
-    font-weight: 400;        
-    background-color: rgba(241, 221, 207, 0.6); 
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(4px);
-    box-sizing: border-box; /* 👈 ¡AGREGÁ ESTA LÍNEA ACÁ! */
+    
+    max-width: 800px;        /* Evita que las líneas sean infinitas a lo ancho */
+    margin: 0 auto 30px;     /* Centra el bloque y da espacio abajo */
+    font-weight: 400;        /* Peso normal para esta fuente elegante */
 }
+
 
 
 .mySwiper {
