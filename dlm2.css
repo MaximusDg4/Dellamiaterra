@@ -84,8 +84,8 @@ nav {
 
 .logo img {
     width: auto !important;
-    max-width: 80% !important; /* Bajamos un poco el máximo para que no toque los bordes */
-    height: 180px !important; /* En escritorio 250px está bien, pero aquí lo bajamos un poco para balancear */
+    max-width: 90% !important; /* Igual que en Productos */
+    height: 250px !important; /* Mismo tamaño que el logo de la sección Productos */
     display: block !important;
     margin: 0 auto 10px !important;
     object-fit: contain !important;
@@ -136,6 +136,11 @@ nav ul li a {
 
 
 
+
+.hero h2 {
+    font-style: normal;   /* Sacamos la cursiva para que combine con el título de Productos */
+    font-weight: 700;     /* Le damos el mismo peso (negrita) que en Productos */
+}
 
 .hero p {
     font-family: 'Cormorant Garamond', serif;
