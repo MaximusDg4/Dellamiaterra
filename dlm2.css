@@ -81,16 +81,7 @@ nav {
     justify-content: center;
     width: 100%;
 }
-.logo h1 {
-    font-family: 'Cormorant Garamond', serif; /* Mantona la coherencia con los h2 */
-    font-size: 2.2rem;       /* <--- Un tamaño mucho más imponente y vistoso */
-    font-weight: 600;
-    color: #4a4945;          /* Un tono sutilmente más oscuro para que resalte */
-    letter-spacing: 2px;     /* Más espacio entre letras para darle un toque fino */
-    text-align: center;
-    margin-top: 5px;         /* Ajustá este margen si querés acercarlo o alejarlo del logo */
-    margin-bottom: 15px;
-}
+
 .logo img {
     width: auto !important;
     max-width: 80% !important; /* Bajamos un poco el máximo para que no toque los bordes */
@@ -160,9 +151,12 @@ nav ul li a {
     /* Centrado suele quedar mejor en la sección Hero que el justificado */
     text-align: center; 
     
+    width: 100%;
     max-width: 800px;        /* Evita que las líneas sean infinitas a lo ancho */
     margin: 0 auto 30px;     /* Centra el bloque y da espacio abajo */
     font-weight: 400;        /* Peso normal para esta fuente elegante */
+    box-sizing: border-box;
+    overflow-wrap: break-word; /* Salvavidas: nunca deja que una palabra se salga del recuadro */
 }
 
 
@@ -235,6 +229,14 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra todo el contenido de la sección */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* --- SECCIÓN CURSOS --- */
