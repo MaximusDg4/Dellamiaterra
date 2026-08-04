@@ -47,7 +47,7 @@ async function conectarGoogleSheets() {
     }
 }
 
-// TU FUNCIÓN ORIGINAL (Adaptada para soportar múltiples imágenes)
+// RENDERIZAR CATÁLOGO (Con soporte para múltiples imágenes por celda)
 function renderizarCatalogo() {
     const contenedor = document.getElementById("catalogo-compra");
     if (!contenedor) return;
@@ -69,14 +69,15 @@ function renderizarCatalogo() {
         const textoMensaje = `Hola Della Mia Terra! Me interesa consultar por la compra de: ${prod.titulo} (${precioFormateado}). ¿Está disponible?`;
         const urlWhatsApp = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(textoMensaje)}`;
 
-        // Separa las imágenes por comas si hay más de una en la celda
-        const listaImagenes = prod.imagen 
-            ? prod.imagen.split(',').map(url => url.trim()) 
-            : ["img/placeholder.jpg"];
+        // Separa múltiples imágenes por comas
+        const rawImagen = String(prod.imagen || '').replace(/[\r\n]+/g, '');
+        const listaImagenes = rawImagen.split(',')
+            .map(url => url.trim())
+            .filter(url => url.length > 0);
         
-        const imagenPortada = listaImagenes[0];
+        const imagenPortada = listaImagenes.length > 0 ? listaImagenes[0] : "img/placeholder.jpg";
 
-        // Crea links ocultos para que baguetteBox arme la galería con las imágenes secundarias
+        // Genera links ocultos para la galería flotante baguetteBox
         const imagenesAdicionalesHTML = listaImagenes.slice(1).map(url => `
             <a href="${url}" class="producto-imagen" title="${prod.titulo} - Dellamiaterra" style="display:none;"></a>
         `).join('');
@@ -115,26 +116,38 @@ function renderizarCatalogo() {
         });
     }
 
-    // Actualizar el diseño visual de la botonera de paginación abajo
-    actualizarBotonesPaginacion();
+    // Actualiza la barra de paginación
+    configurarPaginacion();
 }
 
-// TU FUNCIÓN ORIGINAL DE PAGINACIÓN
+// CONFIGURAR PAGINACIÓN DINÁMICA
 function configurarPaginacion() {
     const barraPaginacion = document.querySelector(".paginacion");
     if (!barraPaginacion) return;
 
-    // Quitamos oyentes viejos para que no se dupliquen al cambiar de página
-    barraPaginacion.replaceWith(barraPaginacion.cloneNode(true));
+    const totalPaginas = Math.ceil(productosCompra.length / PRODUCTOS_POR_PAGINA);
+
+    // Oculta la barra si no hay más de una página
+    if (totalPaginas <= 1) {
+        barraPaginacion.innerHTML = "";
+        return;
+    }
+
+    // Genera automáticamente los botones según los datos reales
+    let botonesHTML = `<button class="btn-pag">&laquo; Anterior</button>`;
     
-    // Volvemos a capturar el elemento clonado limpio
-    const nuevaBarra = document.querySelector(".paginacion");
+    for (let i = 1; i <= totalPaginas; i++) {
+        const claseActiva = i === paginaActual ? "num-pag activa" : "num-pag";
+        botonesHTML += `<button class="${claseActiva}">${i}</button>`;
+    }
     
-    nuevaBarra.addEventListener("click", function(e) {
+    botonesHTML += `<button class="btn-pag">Siguiente &raquo;</button>`;
+    barraPaginacion.innerHTML = botonesHTML;
+
+    // Asigna eventos dinámicos a los botones
+    barraPaginacion.onclick = function(e) {
         e.preventDefault(); 
-        
         const objetivo = e.target;
-        const totalPaginas = Math.ceil(productosCompra.length / PRODUCTOS_POR_PAGINA);
 
         if (objetivo.classList.contains("num-pag")) {
             paginaActual = parseInt(objetivo.textContent);
@@ -157,20 +170,8 @@ function configurarPaginacion() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
-    });
+    };
 }
 
-// TU FUNCIÓN ORIGINAL DE BOTONES ACTIVOS
-function actualizarBotonesPaginacion() {
-    const numerosPagina = document.querySelectorAll(".num-pag");
-    numerosPagina.forEach(boton => {
-        if (parseInt(boton.textContent) === paginaActual) {
-            boton.classList.add("activa");
-        } else {
-            boton.classList.remove("activa");
-        }
-    });
-}
-
-// Inicializar conectando primero con Google Sheets
+// Inicialización conectando primero con Google Sheets
 document.addEventListener("DOMContentLoaded", conectarGoogleSheets);
