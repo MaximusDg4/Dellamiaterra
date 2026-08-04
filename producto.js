@@ -5,7 +5,7 @@ const SPREADSHEET_ID = "16V59XKXKq8wfFGBvxyPcL7i7fqf94tz0D04Ry-J_GUA";
 const TAB_NAME = "Hoja 1"; // Asegurate de que tu pestaña se llame así
 const TELEFONO_WHATSAPP = "5491155153397"; 
 
-const PRODUCTOS_POR_PAGINA = 6; // Cuántos productos se ven por página
+const PRODUCTOS_POR_PAGINA = 8; // Cuántos productos se ven por página
 let paginaActual = 1;
 let productosCompra = []; // Se va a rellenar dinámicamente desde Google Sheets
 
