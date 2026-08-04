@@ -47,7 +47,7 @@ async function conectarGoogleSheets() {
     }
 }
 
-// TU FUNCIÓN ORIGINAL (Adaptada para leer los datos dinámicos)
+// TU FUNCIÓN ORIGINAL (Adaptada para soportar múltiples imágenes)
 function renderizarCatalogo() {
     const contenedor = document.getElementById("catalogo-compra");
     if (!contenedor) return;
@@ -69,11 +69,24 @@ function renderizarCatalogo() {
         const textoMensaje = `Hola Della Mia Terra! Me interesa consultar por la compra de: ${prod.titulo} (${precioFormateado}). ¿Está disponible?`;
         const urlWhatsApp = `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(textoMensaje)}`;
 
+        // Separa las imágenes por comas si hay más de una en la celda
+        const listaImagenes = prod.imagen 
+            ? prod.imagen.split(',').map(url => url.trim()) 
+            : ["img/placeholder.jpg"];
+        
+        const imagenPortada = listaImagenes[0];
+
+        // Crea links ocultos para que baguetteBox arme la galería con las imágenes secundarias
+        const imagenesAdicionalesHTML = listaImagenes.slice(1).map(url => `
+            <a href="${url}" class="producto-imagen" title="${prod.titulo} - Dellamiaterra" style="display:none;"></a>
+        `).join('');
+
         const tarjetaHTML = `
             <article class="producto-card">
-                <a href="${prod.imagen}" class="producto-imagen" title="${prod.titulo} - Dellamiaterra">
-                    <img src="${prod.imagen}" alt="${prod.titulo}">
+                <a href="${imagenPortada}" class="producto-imagen" title="${prod.titulo} - Dellamiaterra">
+                    <img src="${imagenPortada}" alt="${prod.titulo}">
                 </a>
+                ${imagenesAdicionalesHTML}
                 <div class="producto-info">
                     <div>
                         <h3>${prod.titulo}</h3>
@@ -159,10 +172,5 @@ function actualizarBotonesPaginacion() {
     });
 }
 
-// Inicializar llamando primero a la conexión con Google
+// Inicializar conectando primero con Google Sheets
 document.addEventListener("DOMContentLoaded", conectarGoogleSheets);
-// Inicializar todo al cargar la web
-document.addEventListener("DOMContentLoaded", () => {
-    renderizarCatalogo();
-    configurarPaginacion();
-});
