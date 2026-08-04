@@ -157,7 +157,7 @@ nav ul li a {
 
 /* --- LA NUEVA GRILLA DE CATÁLOGO (EDITADA: Más chica) --- */
 .catalogo-grid {
-   .catalogo-grid {
+
     display: grid;
     /* Subimos a 300px el mínimo para darle más porte a cada tarjeta */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
