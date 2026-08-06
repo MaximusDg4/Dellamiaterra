@@ -1,7 +1,5 @@
 // home.js - Funcionalidades de la Página de Inicio
 
-// home.js - Funcionalidades de la Página de Inicio
-
 document.addEventListener("DOMContentLoaded", () => {
     
     // 1. Menú con cambio de diseño al hacer scroll
@@ -54,13 +52,13 @@ const aparecerAlScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // Deja de observarlo una vez que apareció
+            observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15 }); // Se activa cuando se ve el 15% del elemento
+}, { threshold: 0.15 });
 
 secciones.forEach(sec => {
-    sec.classList.add('efecto-oculto'); // Le damos el estado inicial por JS
+    sec.classList.add('efecto-oculto');
     aparecerAlScroll.observe(sec);
 });
 
@@ -120,15 +118,11 @@ itemsCursosHome.forEach(curso => {
             const precioSpan = curso.querySelector('.precio-curso');
             const precioTexto = precioSpan ? precioSpan.textContent : '';
 
-            // Armamos el mensaje automático para WhatsApp
+            // Mensaje directo para WhatsApp
             const mensajeWhatsApp = `¡Hola Della Mia Terra! Me interesa inscribirme en la propuesta: "${nombreCurso}" (${precioTexto}). ¿Tienen cupos o me podrían indicar cómo reservar?`;
 
-            // Abrimos el enlace de WhatsApp
             const urlWhatsApp = `https://wa.me/${TELEFONO_INSCRIPCIONES}?text=${encodeURIComponent(mensajeWhatsApp)}`;
             window.open(urlWhatsApp, '_blank');
         });
     }
 });
-            });
-        }
-    });
